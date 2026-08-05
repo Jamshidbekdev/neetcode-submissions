@@ -1,0 +1,16 @@
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        left, right = 0, len(s) - 1
+        while left < right:
+            if s[left] != s[right]:
+                return self.isPalindrome(s, left + 1, right) or self.isPalindrome(s, left, right - 1)
+            left += 1
+            right -= 1
+        return True
+    def isPalindrome(self, text: str, left: int, right: int):
+        while left < right:
+            if text[left] != text[right]:
+                return False
+            left += 1
+            right -= 1
+        return True
